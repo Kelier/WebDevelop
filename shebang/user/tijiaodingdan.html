@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>order submit</title>
+		<link rel="stylesheet"href="../css/css0.css"/>
+		
+<link href="../css/style.css" rel='stylesheet' type='text/css' />
+		<script src="../js0/js0.js"></script>
+		<script type="text/javascript" src="../js0/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="../js0/jquery.easyui.min.js"></script>
+		<script language="javascript" type="text/javascript">
+        function CloseWindow()
+        { 
+            window.opener=null;
+            window.open("","_self");
+            window.close();
+        }
+       </script>
+	<style type="text/css">
+	.button {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 16px/100% 'Microsoft yahei',Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+</style>	
+	</head>
+	<body>
+		<table>
+			<td>
+		<form id="form1" name="form1" action="" method="post">
+		宿舍楼<input id="1" type="number"  required="required"/><br />
+		宿舍号<input id="2" type="number"   required="required" /><br />
+		&nbsp;姓名<input id="userName" name="userName"  required="required" /><br />
+		&nbsp;备注<textarea cols=21 rows=3 name=text></textarea> <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  class="button btn btn-primary btn-normal addcar" id="btnOK" >确认提交</a>
+		</form>
+		</td>
+		</table>
+	</body>
+</html>
+<script type="text/javascript" src="../js0/jquery-1.11.1.min.js" ></script>
+<script type="text/javascript" src="../js0/js0.js"></script>
