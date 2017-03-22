@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<input type="button" id="btn0" value="增加" />
+		<li id="li0">
+		</li>
+	</body>
+</html>
+<script type="text/javascript" src="../js0/jquery-1.11.3.js" ></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btn0").click(function(){
+			$("#li0").append("<ul id='ul0'>laozhang</ul>");
+		});
+		//对于新添加的部件增加js代码
+		$(document).on("click","#ul0",function(){
+		  window.alert("laozhang");
+		}); 
+	});
+</script>
