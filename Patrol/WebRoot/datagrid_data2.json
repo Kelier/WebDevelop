@@ -1,7 +1,0 @@
-[
-{"id":"1","patrol":"是","phone":15263548759,"photo":"img/person_photo.png","position":"高一年级组组长","rname":"万文杰","role":"admin","score":100,"sex":"男","uname":"wanwenjie","upwd":1256},
-{"id":"2","patrol":"否","phone":13152640234,"photo":"img/person_photo.png","position":"高二年级组组长","rname":"闫江南","role":"admin","score":100,"sex":"男","uname":"yanjiangnan","upwd":175},
-{"id":"3","patrol":"是","phone":13658451236,"photo":"img/person_photo.png","position":"高三年级组组长","rname":"李天智","role":"plant","score":100,"sex":"男","uname":"litianzhi","upwd":14556},
-{"id":"4","patrol":"否","phone":15623548952,"photo":"img/person_photo.png","position":"高四年级组组长","rname":"孙宇辰","role":"plant","score":10,"sex":"女","uname":"sunyuchen","upwd":156},
-{"id":"6","patrol":"否","phone":13364859611,"photo":"img/person_photo.png","position":"高三年级数学组组长","rname":"张二","role":"teacher","score":85,"sex":"女","uname":"zhanger","upwd":13456}
-]

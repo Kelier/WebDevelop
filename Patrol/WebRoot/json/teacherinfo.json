@@ -1,9 +1,0 @@
-{
-"total":5,
-"rows":[
-{"id":1,"sid":1001,"tname":"万文杰","tage":"18","tphone":"13022297135","email":"1025398501@qq.com"},
-{"id":2,"sid":1002,"tname":"万文杰","tage":"19","tphone":"13022297135","email":"1025398501@qq.com"},
-{"id":3,"sid":1003,"tname":"万文杰","tage":"22","tphone":"13022297135","email":"1025398501@qq.com"},
-{"id":4,"sid":1004,"tname":"万文杰","tage":"21","tphone":"13022297135","email":"1025398501@qq.com"},
-{"id":5,"sid":1005,"tname":"万文杰","tage":"22","tphone":"13022297135","email":"1025398501@qq.com"}]
-}
