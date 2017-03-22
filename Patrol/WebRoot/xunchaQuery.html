@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>巡查信息查询</title>
+<link rel="stylesheet" href="easyui/themes/bootstrap/easyui.css" />
+<link rel="stylesheet" href="easyui/themes/icon.css">
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="datagrid-filter.js"></script>
+<style>
+.icon-filter {
+	background: url('img/filter.png') no-repeat center center;
+}
+</style>
+<script>
+	$(function() {
+
+		var dg = $('#dg').datagrid({
+			filterBtnIconCls : 'icon-filter'
+		});
+		dg.datagrid('enableFilter', [
+				{
+					field : 'score',
+					type : 'numberbox',
+					options : {
+						precision : 1
+					},
+					op : [ 'equal', 'notequal', 'less', 'lessorequal',
+							'greater', 'greaterorequal' ]
+				}, {
+					field : 'role',
+					type : 'combobox',
+					options : {
+						panelHeight : 'auto',
+						data : [ {
+							value : '',
+							text : '所有'
+						}, {
+							value : 'admin',
+							text : '管理员'
+						}, {
+							value : 'plant',
+							text : '巡查员'
+						}, {
+							value : 'teacher',
+							text : '教师'
+						} ],
+						onChange : function(value) {
+							if (value == '') {
+								dg.datagrid('removeFilterRule', 'role');
+							} else {
+								dg.datagrid('addFilterRule', {
+									field : 'role',
+									op : 'equal',
+									value : value
+								});
+							}
+							dg.datagrid('doFilter');
+						}
+					}
+				}, 
+					{
+				field:'class',
+				type:'combobox',
+				options:{
+					panelHeight:'auto',
+					data:[{value:'',text:'所有'},{value:'1',text:'1班'},{value:'2',text:'2班'},{value:'3',text:'3班'},{value:'4',text:'4班'},{value:'5',text:'5班'},{value:'6',text:'6班'},{value:'7',text:'7班'},{value:'8',text:'8班'}],
+					onChange:function(value){
+						if (value == ''){
+							dg.datagrid('removeFilterRule', 'class');
+						} else {
+							dg.datagrid('addFilterRule', {
+								field: 'class',
+								op: 'equal',
+								value: value
+							});
+						}
+						dg.datagrid('doFilter');
+					}//datagrid_data1.json
+				}//findUserInfo
+			},
+			{
+				field:'dept',
+				type:'combobox',
+				options:{
+					panelHeight:'auto',
+					data:[{value:'',text:'所有'},{value:'高一年级',text:'高一'},{value:'高二年级',text:'高二'},{value:'高三年级',text:'高三'},{value:'高四年级',text:'高四'}],
+					onChange:function(value){
+						if (value == ''){
+							dg.datagrid('removeFilterRule', 'department');
+						} else {
+							dg.datagrid('addFilterRule', {
+								field: 'department',
+								op: 'equal',
+								value: value
+							});
+						}
+						dg.datagrid('doFilter');
+					}//datagrid_data1.json
+				}//findUserInfo
+			},
+				
+				{
+					field : 'department',
+					type : 'combobox',
+					options : {
+						panelHeight : 'auto',
+						data : [ {
+							value : '',
+							text : '所有'
+						}, {
+							value : 'seniorOne',
+							text : '高一'
+						}, {
+							value : 'seniorTwo',
+							text : '高二'
+						}, {
+							value : 'seniorThree',
+							text : '高三'
+						}, {
+							value : 'seniorFour',
+							text : '高四'
+						} ],
+						onChange : function(value) {
+							if (value == '') {
+								dg.datagrid('removeFilterRule', 'department');
+							} else {
+								dg.datagrid('addFilterRule', {
+									field : 'department',
+									op : 'equal',
+									value : value
+								});
+							}
+							dg.datagrid('doFilter');
+						}//datagrid_data1.json
+					}
+				//findUserInfo
+				}, {
+					field : 'course',
+					type : 'combobox',
+					options : {
+						panelHeight : 'auto',
+						data : [ {
+							value : '',
+							text : '所有'
+						}, {
+							value : 'chinese',
+							text : '语文'
+						}, {
+							value : 'math',
+							text : '数学'
+						}, {
+							value : 'english',
+							text : '英语'
+						}, {
+							value : 'physic',
+							text : '物理'
+						}, {
+							value : 'chemistry',
+							text : '化学'
+						}, {
+							value : 'biology',
+							text : '生物'
+						}, {
+							value : 'politic',
+							text : '政治'
+						}, {
+							value : 'history',
+							text : '历史'
+						}, {
+							value : 'geography',
+							text : '地理'
+						} ],
+						onChange : function(value) {
+							if (value == '') {
+								dg.datagrid('removeFilterRule', 'course');
+							} else {
+								dg.datagrid('addFilterRule', {
+									field : 'course',
+									op : 'equal',
+									value : value
+								});
+							}
+							dg.datagrid('doFilter');
+						}//datagrid_data1.json
+					}
+				//findUserInfo
+				}, {
+					field : 'sex',
+					type : 'combobox',
+					options : {
+						panelHeight : 'auto',
+						data : [ {
+							value : '',
+							text : '所有'
+						}, {
+							value : '男',
+							text : '男'
+						}, {
+							value : '女',
+							text : '女'
+						} ],
+						onChange : function(value) {
+							if (value == '') {
+								dg.datagrid('removeFilterRule', 'sex');
+							} else {
+								dg.datagrid('addFilterRule', {
+									field : 'sex',
+									op : 'equal',
+									value : value
+								});
+							}
+							dg.datagrid('doFilter');
+						}//datagrid_data1.json
+					}
+				//findUserInfo
+				} ]);
+	});
+</script>
+</head>
+<body>
+
+
+	<table id="dg" title="巡查信息查询" style="width:auto;height:auto"
+		data-options="
+				rownumbers: true,
+				singleSelect: true,
+				iconCls: 'icon-save',
+				url: 'getRecord',
+				method: 'get'">
+		<thead>
+			<tr>
+				<th data-options="field:'dept',width:'8%'">年级</th>
+				<th data-options="field:'class',width:'8%'">班级</th>
+				<th data-options="field:'course',width:'8%'">课程</th>
+				<th data-options="field:'late',width:'8%'">迟到人数</th>
+				<th data-options="field:'lazy',width:'8%'">趴桌人数</th>
+				<th data-options="field:'play',width:'8%'">玩手机人数</th>
+				<th data-options="field:'book',width:'8%'">看闲书人数</th>
+				<th data-options="field:'sleep',width:'8%'">睡觉人数</th>
+				<th data-options="field:'ontime',width:'8%'">教师准时上课</th>
+				<th data-options="field:'onaction',width:'8%'">教师表现</th>
+				<th data-options="field:'remarks',width:'10%'">备注</th>
+				<th data-options="field:'date',width:'8%'">录入时间</th>
+			</tr>
+		</thead>
+	</table>
+</body>
+</html>
+</body>
+</html>

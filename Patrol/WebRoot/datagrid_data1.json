@@ -1,0 +1,9 @@
+[
+{"id":"1","uname":"img/3.jpg","runame":"孙宇辰","sex":"男","class":"高一五班","course":"math","department":"高一","phone":"13564596403","score":"8","role":"admin"},
+{"id":"2","uname":"img/3.jpg","runame":"范德萨","sex":"男","class":"高三五班","course":"math","department":"高三","phone":"13564588543","score":"8","role":"admin"},
+{"id":"3","uname":"img/3.jpg","runame":"愤怒的水灵","sex":"男","class":"高四七班","course":"math","department":"高四","phone":"131025582103","score":"8","role":"admin"},
+{"id":"4","uname":"img/3.jpg","runame":"你看","sex":"女","class":"高二五班","course":"math","department":"高二","phone":"13564582103","score":"8","role":"plant"},
+{"id":"5","uname":"img/3.jpg","runame":"的分泌物","sex":"男","class":"高一五班","course":"math","department":"高一","phone":"15624582103","score":"8","role":"teacher"},
+{"id":"6","uname":"img/3.jpg","runame":"都是","sex":"女","class":"高一五班","course":"math","department":"高一","phone":"13032182103","score":"8","role":"admin"}
+
+]

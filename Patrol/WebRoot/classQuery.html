@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>班级信息查询</title>
+<link rel="stylesheet" href="easyui/themes/bootstrap/easyui.css" />
+<link rel="stylesheet" href="easyui/themes/icon.css">
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="datagrid-filter.js" charset='UTF-8'></script>
+<style>
+.icon-filter {
+	background: url('img/filter.png') no-repeat center center;
+}
+</style>
+<script>
+	
+
+	$(function() {
+		var dg = $('#dg').datagrid({
+			filterBtnIconCls : 'icon-filter',
+
+		});
+		dg.datagrid('enableFilter', [
+				{
+					field : 'cscore',
+					type : 'numberbox',
+					options : {
+						precision : 1
+					},
+					op : [ 'equal', 'notequal', 'less', 'lessorequal',
+							'greater', 'greaterorequal' ]
+				}, 
+					{
+				field:'class',
+				type:'combobox',
+				options:{
+					panelHeight:'auto',
+					data:[{value:'',text:'所有'},{value:'1',text:'1班'},{value:'2',text:'2班'},{value:'3',text:'3班'},{value:'4',text:'4班'},{value:'5',text:'5班'},{value:'6',text:'6班'},{value:'7',text:'7班'},{value:'8',text:'8班'}],
+					onChange:function(value){
+						if (value == ''){
+							dg.datagrid('removeFilterRule', 'class');
+						} else {
+							dg.datagrid('addFilterRule', {
+								field: 'class',
+								op: 'equal',
+								value: value
+							});
+						}
+						dg.datagrid('doFilter');
+					}//datagrid_data1.json
+				}//findUserInfo
+			},
+			
+				
+				{
+					field : 'grade',
+					type : 'combobox',
+					options : {
+						panelHeight : 'auto',
+						data : [ {
+							value : '',
+							text : '所有'
+						}, {
+							value : '高一年级',
+							text : '高一年级'
+						}, {
+							value : '高二年级',
+							text : '高二年级'
+						}, {
+							value : '高三年级',
+							text : '高三年级'
+						}, {
+							value : '高四年级',
+							text : '高四年级'
+						} ],
+						onChange : function(value) {
+							if (value == '') {
+								dg.datagrid('removeFilterRule', 'grade');
+							} else {
+								dg.datagrid('addFilterRule', {
+									field : 'grade',
+									op : 'equal',
+									value : value
+								});
+							}
+							dg.datagrid('doFilter');
+						}
+					}
+				} ]);
+	});
+</script>
+</head>
+<body>
+
+
+	<table id="dg" title="班级信息查询" style="width:auto;height:auto"
+		data-options="
+				rownumbers: true,
+				singleSelect: true,
+				iconCls: 'icon-save',
+				url: 'getClassInfo',
+				method: 'post'
+			">
+		<thead>
+			<tr>
+				<th data-options="field:'grade',width:'8%'">年级</th>
+				<th data-options="field:'class',width:'6%'">班级</th>
+				<th data-options="field:'mainteacher',width:'8%'">班主任</th>
+				<th data-options="field:'score',width:'6%'">评分</th>
+				<th data-options="field:'Chinese',width:'8%',align:'center'">语文</th>
+				<th data-options="field:'Math',width:'8%',align:'center'">数学</th>
+				<th data-options="field:'English',width:'8%',align:'center'">英语</th>
+				<th data-options="field:'Physic',width:'8%',align:'center'">物理</th>
+				<th data-options="field:'Chemistry',width:'8%',align:'center'">化学</th>
+				<th data-options="field:'Biology',width:'8%',align:'center'">生物</th>
+				<th data-options="field:'Politics',width:'8%',align:'center'">政治</th>
+				<th data-options="field:'History',width:'8%',align:'center'">历史</th>
+				<th data-options="field:'Geography',width:'8%',align:'center'">地理</th>
+			</tr>
+		</thead>
+	</table>
+</body>
+</html>
