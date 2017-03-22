@@ -1,0 +1,8 @@
+[
+{"id":"1","cname":"五班","mainteacher":"范德萨","grade":"高二","cscore":"6","Chinese":"范德萨","Math":"范德萨","English":"范德萨","Physic":"范德萨","Chemistry":"范德萨","Biology":"范德萨","Politics":"范德萨","History":"范德萨","Geography":"范德萨"},
+{"id":"2","cname":"一班","mainteacher":"愤怒的水灵","grade":"高二","cscore":"6","Chinese":"愤怒的水灵","Math":"愤怒的水灵","English":"愤怒的水灵","Physic":"愤怒的水灵","Chemistry":"愤怒的水灵","Biology":"愤怒的水灵","Politics":"愤怒的水灵","History":"愤怒的水灵","Geography":"愤怒的水灵"},
+{"id":"3","cname":"七班","mainteacher":"离开电脑","grade":"高二","cscore":"6","Chinese":"离开电脑","Math":"离开电脑","English":"离开电脑","Physic":"离开电脑","Chemistry":"离开电脑","Biology":"离开电脑","Politics":"离开电脑","History":"离开电脑","Geography":"离开电脑"},
+{"id":"4","cname":"六班","mainteacher":"你看","grade":"高一","cscore":"6","Chinese":"你看","Math":"你看","English":"你看","Physic":"你看","Chemistry":"你看","Biology":"你看","Politics":"你看","History":"你看","Geography":"你看"},
+{"id":"5","cname":"九班","mainteacher":"付女士","grade":"高二","cscore":"6","Chinese":"付女士","Math":"付女士","English":"付女士","Physic":"付女士","Chemistry":"付女士","Biology":"付女士","Politics":"付女士","History":"付女士","Geography":"付女士"},
+{"id":"6","cname":"四班","mainteacher":"都是","grade":"高四","cscore":"6","Chinese":"都是","Math":"都是","English":"都是","Physic":"都是","Chemistry":"都是","Biology":"都是","Politics":"都是","History":"都是","Geography":"都是"}
+]

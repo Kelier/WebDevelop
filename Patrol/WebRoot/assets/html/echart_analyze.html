@@ -1,0 +1,364 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+<meta name="format-detection"
+	content="telephone=no,email=no,date=no,address=no">
+<title>Hui</title>
+<link href="../css/Hui.css" rel="stylesheet" type="text/css" />
+<style type="text/css"></style>
+</head>
+<body>
+	<div
+		class="H-channel-title H-flexbox-horizontal H-theme-background-color-white H-vertical-middle H-border-vertical-bottom-after">
+		<div
+			class="H-channel-line H-theme-background-color1 H-padding-vertical-top-15 H-padding-horizontal-left-3  H-margin-horizontal-left-10"></div>
+		<div
+			class="H-channel-text H-theme-font-color1 H-flex-item H-font-size-18 H-theme-font-color-black H-padding-10 H-margin-horizontal-right-10 H-text-show-row-1">柱状图</div>
+	</div>
+	<div id="main" class="H-width-100-percent H-box-sizing-border-box"
+		style="height:280px;"></div>
+	<div
+		class="H-channel-title H-flexbox-horizontal H-theme-background-color-white H-vertical-middle H-border-vertical-bottom-after">
+		<div
+			class="H-channel-line H-theme-background-color1 H-padding-vertical-top-15 H-padding-horizontal-left-3  H-margin-horizontal-left-10"></div>
+		<div
+			class="H-channel-text H-theme-font-color1 H-flex-item H-font-size-18 H-theme-font-color-black H-padding-10 H-margin-horizontal-right-10 H-text-show-row-1">折线图</div>
+	</div>
+	<div id="main2" class="H-width-100-percent H-box-sizing-border-box"
+		style="height:280px;"></div>
+	<div
+		class="H-channel-title H-flexbox-horizontal H-theme-background-color-white H-vertical-middle H-border-vertical-bottom-after">
+		<div
+			class="H-channel-line H-theme-background-color1 H-padding-vertical-top-15 H-padding-horizontal-left-3  H-margin-horizontal-left-10"></div>
+		<div
+			class="H-channel-text H-theme-font-color1 H-flex-item H-font-size-18 H-theme-font-color-black H-padding-10 H-margin-horizontal-right-10 H-text-show-row-1">圆形图</div>
+	</div>
+	<div id="main3" class="H-width-100-percent H-box-sizing-border-box"
+		style="height:280px;"></div>
+	<script src="../js/H.js" type="text/javascript"></script>
+	<script src="../js/echarts.js" type="text/javascript"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+		//记录学生及老师表现
+		var data_x_time = [], data_y_stunum = [], data_y_teascore = [];
+		//这里是年级
+		var data_x_grade = [];
+		var data_y_grade1 = [], data_y_grade2 = [], data_y_grade3 = [], data_y_grade4 = [];
+		// 柱状图
+		var myChart=echarts.init(document.getElementById('main'));
+		myChart.showLoading();
+		getStunum();
+		getTeascore();
+		var option={
+				title:{
+					text:'',
+					subtext:'巡查记录'
+				},
+				tooltip:{
+					trigger:'axis'
+				},
+				legend:{
+					data:['学生不良表现人数','老师综合评分']
+				},
+				toolbox:{
+					show:true,
+					feature:{
+						dataView:{
+							show:true,
+							readOnly:false
+						},
+						magicType:{
+							show:true,
+							type:['line','bar']
+						},
+						restore:{
+							show:true
+						},
+						saveAsImage:{
+							show:true
+						}
+					}
+				},
+				calculable:true,
+				xAxis:[{
+					type:'category',
+					data:data_x_time
+				}],
+				yAxis:[{
+					type:'value'
+				}],
+				series:[{
+					name:'学生不良表现人数',
+					type:'bar',
+					data:data_y_stunum
+			
+				},{
+					name:'老师综合评分',
+					type:'bar',
+					data:data_y_teascore
+				}]
+		};
+		myChart.hideLoading();
+		myChart.setOption(option);
+		function getStunum() {
+			
+			$.ajax({
+				type : "post",
+				async : false, //同步执行
+				url : "../../tabStuNum",
+				data : {},
+				dataType : "json", //返回数据形式为json
+				success : function(result) {
+					if (result) {
+						
+						for (var i = 0; i < result.total; i++) {
+							data_x_time.push(result.rows[i].date);
+							data_y_stunum.push(parseInt(result.rows[i].late)+parseInt(result.rows[i].lazy)+parseInt(result.rows[i].play)+parseInt(result.rows[i].book)+parseInt(result.rows[i].sleep));
+						}
+					}
+				},
+				error : function(errorMsg) {
+					alert("不好意思，大爷，图表请求数据失败啦!");
+					myChart.hideLoading();
+				}
+			});
+			}
+		function getTeascore() {
+			
+			$.ajax({
+				type : "post",
+				async : false, //同步执行
+				url : "../../getTeascore",
+				data : {},
+				dataType : "json", //返回数据形式为json
+				success : function(result) {
+					if (result) {
+						
+						for (var i = 0; i < result.total; i++) {
+							
+							data_y_teascore.push(result.rows[i].score);
+						}
+					}
+				},
+				error : function(errorMsg) {
+					alert("不好意思，大爷，图表请求数据失败啦!");
+					myChart.hideLoading();
+				}
+			});
+			} 
+		// ######################## 折线图
+		var myChart2 = echarts.init(document.getElementById('main2'));
+		myChart2.showLoading();
+		getGradedata1();
+		getGradedata2();
+		getGradedata3();
+		getGradedata4();
+		var option2 = {
+			title : {
+				text : '',
+				subtext:'成绩'
+			},
+			tooltip : {
+				trigger : 'axis'
+			},
+			legend : {
+				data : [ '高一年级', '高二年级', '高三年级', '高四年级' ]
+			},
+			grid : {
+				left : '3%',
+				right : '4%',
+				bottom : '3%',
+				containLabel : true
+			},
+			toolbox : {
+				feature : {
+					saveAsImage : {}
+				}
+			},
+			xAxis : {
+				type : 'category',
+				boundaryGap : false,
+				data : data_x_grade
+			},
+			yAxis : {
+				type : 'value'
+			},
+			series : [ {
+				name : '高一年级',
+				type : 'line',
+				stack : '总量',
+				data : data_y_grade1
+			}, {
+				name : '高二年级',
+				type : 'line',
+				stack : '总量',
+				data : data_y_grade2
+			}, {
+				name : '高三年级',
+				type : 'line',
+				stack : '总量',
+				data : data_y_grade3
+			}, {
+				name : '高四年级',
+				type : 'line',
+				stack : '总量',
+				data : data_y_grade4
+			} ]
+		};
+		// 为echarts对象加载数据 
+
+		myChart2.hideLoading();
+		myChart2.setOption(option2);
+		function getGradedata1() {
+			
+			$.ajax({
+				type : "post",
+				async : false, //同步执行
+				url : "../../tabGradestar1",
+				data : {
+					"page" : 1,
+					"rows" : 10
+				},
+				dataType : "json", //返回数据形式为json
+				success : function(result) {
+					if (result) {
+						for (var i = 0; i < result.total; i++) {
+							data_x_grade.push(result.rows[i].u_class + "班");
+							data_y_grade1.push(result.rows[i].score);
+						}
+					}
+				},
+				error : function(errorMsg) {
+					alert("不好意思，大爷，图表请求数据失败啦!");
+					myChart2.hideLoading();
+				}
+			});
+		}
+		function getGradedata2() {
+			$.ajax({
+				type : "post",
+				async : false, //同步执行
+				url : "../../tabGradestar2",
+				data : {
+					"page" : 1,
+					"rows" : 10
+				},
+				dataType : "json", //返回数据形式为json
+				success : function(result) {
+					if (result) {
+						for (var i = 0; i < result.total; i++) {
+							/* 	data_x_grade.push(result.rows[i].date); */
+							data_y_grade2.push(result.rows[i].score);
+						}
+					}
+				},
+				error : function(errorMsg) {
+					alert("不好意思，大爷，图表请求数据失败啦!");
+					myChart2.hideLoading();
+				}
+			});
+		}
+		function getGradedata3() {
+			$.ajax({
+				type : "post",
+				async : false, //同步执行
+				url : "../../tabGradestar3",
+				data : {
+					"page" : 1,
+					"rows" : 10
+				},
+				dataType : "json", //返回数据形式为json
+				success : function(result) {
+					if (result) {
+						for (var i = 0; i < result.total; i++) {
+							/* 	data_x_grade.push(result.rows[i].date); */
+							data_y_grade3.push(result.rows[i].score);
+						}
+					}
+				},
+				error : function(errorMsg) {
+					alert("不好意思，大爷，图表请求数据失败啦!");
+					myChart2.hideLoading();
+				}
+			});
+		}
+		function getGradedata4() {
+			$.ajax({
+				type : "post",
+				async : false, //同步执行
+				url : "../../tabGradestar4",
+				data : {
+					"page" : 1,
+					"rows" : 10
+				},
+				dataType : "json", //返回数据形式为json
+				success : function(result) {
+					if (result) {
+						for (var i = 0; i < result.total; i++) {
+							/* 				data_x_grade.push(result.rows[i].date); */
+							data_y_grade4.push(result.rows[i].score);
+						}
+					}
+				},
+				error : function(errorMsg) {
+					alert("不好意思，大爷，图表请求数据失败啦!");
+					myChart2.hideLoading();
+				}
+			});
+		}
+
+		// ######################## 圆形图
+		var myChart3 = echarts.init(document.getElementById('main3'));
+		var option3 = {
+			title : {
+				text : '',
+				subtext : '老师上课总体表现',
+				x : 'center'
+			},
+			tooltip : {
+				trigger : 'item',
+				formatter : "{a} <br/>{b} : {c} ({d}%)"
+			},
+			legend : {
+				orient : 'vertical',
+				left : 'left',
+				data : [ '非常好', '还不错', '一般般', '略不好', '非常差' ]
+			},
+			series : [ {
+				name : '巡查结果',
+				type : 'pie',
+				radius : '55%',
+				center : [ '50%', '60%' ],
+				data : [ {
+					value : 11,
+					name : '非常好'
+				}, {
+					value : 7,
+					name : '还不错'
+				}, {
+					value : 8,
+					name : '一般般'
+				}, {
+					value : 4,
+					name : '略不好'
+				}, {
+					value : 6,
+					name : '非常差'
+				} ],
+				itemStyle : {
+					emphasis : {
+						shadowBlur : 10,
+						shadowOffsetX : 0,
+						shadowColor : 'rgba(0, 0, 0, 0.5)'
+					}
+				}
+			} ]
+		};
+
+		myChart3.setOption(option3);
+	</script>
+</body>
+</html>

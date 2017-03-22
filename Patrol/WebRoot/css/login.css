@@ -1,0 +1,87 @@
+.tip_label1 {
+	color: #CD4F39;
+	line-height: 0px !important;
+	padding-top: 13px;
+	text-align: left;
+	font-size: 10pt;
+	display: none;
+	position: absolute;
+	margin-left: 13px;
+	font-weight:700;
+}
+
+.tip_label2 {
+	color: #CD4F39;
+	line-height: 0px !important;
+	padding-top: 13px;
+	margin-left: 13px;
+	font-size: 10pt;
+	display: none;
+	position: absolute;
+	font-weight:700;
+}
+
+.tip_label3 {
+	color: #CD4F39;
+	line-height: 0px !important;
+	padding-top: 3.8%;
+	margin-left:10%;
+	font-size: 20px;
+	display: none;
+	position: absolute;
+	font-family:'sans-serif'';
+	font-weight:lighter;
+}
+.findpass {
+	color: #CD4F39;
+	line-height: 0px !important;
+	text-align:center;
+	padding-top: 13px;
+	padding-left:57px;
+	font-size: 10pt;
+	display: block;
+	position: absolute;
+	font-family:'sans-serif'';
+	font-weight:lighter;
+}
+
+.btn_change1 {
+	background-color: #FFFFFF;
+	border: none;
+	position: absolute;
+	right: 23px;
+	width: 15px;
+	height: 15px;
+	border-radius: 7.5px;
+	outline: none;
+}
+
+.btn_change1:hover {
+	background-color: #FFFFFF;
+}
+
+.btn_change2 {
+	background-color: grey;
+	border: none;
+	position: absolute;
+	right: 23px;
+	width: 15px;
+	height: 15px;
+	border-radius: 7.5px;
+	outline: none;
+}
+
+.btn_change2:hover {
+	background-color: #FFFFFF;
+}
+
+.box_sides {
+	margin-top: 80px;
+	position: absolute;
+	right: 23px;
+	width: auto;
+	color: #ababab;
+	font-weight: 200;
+	padding: 0px 0px 10px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
